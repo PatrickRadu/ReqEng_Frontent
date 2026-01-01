@@ -1,0 +1,10 @@
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.dashboard-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
