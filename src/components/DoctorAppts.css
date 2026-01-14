@@ -1,0 +1,49 @@
+.appointments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white; /* Ensures text is visible on primary700 background */
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.error-text {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: var(--primary900); /* Slightly darker background for table */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.appointments-table th, 
+.appointments-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--primary500);
+}
+
+.appointments-table th {
+    background-color: var(--primary500);
+    color: white;
+    font-weight: bold;
+}
+
+.appointments-table tr:hover {
+    background-color: var(--primary500); /* Highlight row on hover */
+    transition: background-color 0.2s ease;
+}
