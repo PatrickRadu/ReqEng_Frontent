@@ -35,7 +35,7 @@ const Dashboard: React.FC = () => {
        {role === "patient" && (
         <div>
           <button onClick={() => navigate("/example-patient-page")}>
-            Go to Schedule Appointment
+            View My Appointments
           </button>
         </div>
       )}
