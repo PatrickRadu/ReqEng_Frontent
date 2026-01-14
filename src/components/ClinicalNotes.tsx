@@ -35,8 +35,7 @@ export const ClinicalNotes: React.FC<ClinicalNotesProps> = ({ patientId }) => {
     try {
       const token = localStorage.getItem('access_token');
       const response = await axios.get<Note[]>(`${baseApiUrl}/notes/`, {
-        params: { 
-          patient_id: patientId, 
+        params: {
           search: searchTerm,
           limit: 50 
         },
@@ -112,7 +111,6 @@ export const ClinicalNotes: React.FC<ClinicalNotesProps> = ({ patientId }) => {
     setTimeout(() => setSuccessMsg(""), 3000);
   };
 
-  // Using 'big-container' as requested in README for layout
   return (
     <div className="notes-container big-container">
       {successMsg && <div className="success-banner">{successMsg}</div>}

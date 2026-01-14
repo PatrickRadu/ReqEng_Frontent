@@ -5,18 +5,19 @@ import './Dashboard.css';
 export const UserProfile: React.FC = () => {
   // Accessing user data exactly as described in README Step 5
   const currentUserRole = localStorage.getItem('role');
+  const currentUserRoleCapitalized = currentUserRole ? currentUserRole.charAt(0).toUpperCase() + currentUserRole.slice(1) : '';
   const fullName = localStorage.getItem('full_name');
   
-  // Hardcoded for prototype purposes
-  const targetPatientId = 1; 
+  const storedValue = localStorage.getItem('id');
+  const targetPatientId = Number(storedValue);
 
   // Using 'big-container' to span the full grid width
   return (
     <div className="dashboard-container big-container">
       <div className="dashboard-info">
-        <h1>Patient Profile</h1>
-        <p>Viewing details for Patient ID: {targetPatientId}</p>
-        <p>Logged in as: <strong>{fullName} ({currentUserRole})</strong></p>
+        <h1>{currentUserRoleCapitalized} Profile</h1>
+        <p>Viewing details for User ID: {targetPatientId}</p>
+        <p>Logged in as: <strong>{fullName} ({currentUserRoleCapitalized})</strong></p>
       </div>
 
       <div className="dashboard-panel">
