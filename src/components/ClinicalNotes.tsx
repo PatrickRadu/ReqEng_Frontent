@@ -19,11 +19,8 @@ interface Patient {
 }
 
 export const ClinicalNotes: React.FC = () => {
-  // 1. State for Patients List and Selection
   const [patients, setPatients] = useState<Patient[]>([]);
   const [selectedPatientId, setSelectedPatientId] = useState<number | string>("");
-
-  // Existing State
   const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,7 +30,6 @@ export const ClinicalNotes: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState("");
 
-  // 2. Fetch Patients on Mount
   useEffect(() => {
     const fetchPatients = async () => {
       try {
@@ -57,7 +53,6 @@ export const ClinicalNotes: React.FC = () => {
     fetchPatients();
   }, []);
 
-  // 3. Fetch Notes when Patient Selection Changes
   useEffect(() => {
     if (!selectedPatientId) {
       setNotes([]);
@@ -112,7 +107,7 @@ export const ClinicalNotes: React.FC = () => {
     if (!window.confirm("Delete this note?")) return;
     try {
       const token = localStorage.getItem('access_token');
-      await axios.delete(`${baseApiUrl}/notes/${noteId}`, {
+      await axios.delete(`${baseApiUrl}/notes/delete/${noteId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNotes(notes.filter(n => n.id !== noteId));
@@ -131,7 +126,7 @@ export const ClinicalNotes: React.FC = () => {
     if (editingId === null) return;
     try {
       const token = localStorage.getItem('access_token');
-      const response = await axios.put<Note>(`${baseApiUrl}/notes/${editingId}`, 
+      const response = await axios.put<Note>(`${baseApiUrl}/notes/update/${editingId}`, 
         { content: editContent },
         { headers: { Authorization: `Bearer ${token}` } }
       );
