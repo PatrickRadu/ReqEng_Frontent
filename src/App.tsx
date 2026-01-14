@@ -40,7 +40,7 @@ function App() {
   }
 
   const isRoleAllowedPsychologist = () => {
-    return role === "psychologist";
+    return role === "doctor" || role === "psychologist";
   }
 
   return (
@@ -85,6 +85,17 @@ function App() {
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} isRoleAllowed={isRoleAllowedPsychologist}>
                 <DoctorAppointments />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user-profile"
+            element={
+              <ProtectedRoute 
+                isLoggedIn={isLoggedIn} 
+                isRoleAllowed={() => true} // Logic handled inside component
+              >
+                <UserProfile />
               </ProtectedRoute>
             }
           />

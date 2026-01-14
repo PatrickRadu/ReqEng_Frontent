@@ -28,6 +28,7 @@ export const Auth: React.FC<AuthProps> = ({ setToken }) => {
         email,
         password,
       });
+      localStorage.setItem("id", response.data.user.id);
       localStorage.setItem("role", response.data.user.role);
       localStorage.setItem("full_name", response.data.user.full_name);
       localStorage.setItem("access_token", response.data.access_token);
@@ -39,7 +40,7 @@ export const Auth: React.FC<AuthProps> = ({ setToken }) => {
       console.log("Login successful:", response.data);
       setToken(response.data.access_token);
       // Navigate to the intended page
-      navigate("/dashboard");
+      navigate("/user-profile");
     } catch (err: any) {
       setError(err.response?.data?.detail || "Login failed. Please try again.");
     }
