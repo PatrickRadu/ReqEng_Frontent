@@ -6,6 +6,7 @@ import { Auth } from "./components/Auth";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import ProtectedRoute from "./ProtectedRoute";
 import Dashboard from "./components/Dashboard";
+import { UserProfile } from "./components/UserProfile";
 export interface User {
   id: number;
   email: string;
@@ -37,7 +38,7 @@ function App() {
   }
 
   const isRoleAllowedPsychologist = () => {
-    return role === "psychologist";
+    return role === "doctor" || role === "psychologist";
   }
 
   return (
@@ -82,6 +83,17 @@ function App() {
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} isRoleAllowed={isRoleAllowedPsychologist}>
                 <div>Example Page for Psychologists</div>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user-profile"
+            element={
+              <ProtectedRoute 
+                isLoggedIn={isLoggedIn} 
+                isRoleAllowed={() => true} // Logic handled inside component
+              >
+                <UserProfile />
               </ProtectedRoute>
             }
           />
