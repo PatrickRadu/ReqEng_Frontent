@@ -24,7 +24,7 @@ export const UserProfile: React.FC = () => {
         {currentUserRole === 'doctor' || currentUserRole === 'psychologist' ? (
           /* SCENARIO A: Psychologist View -> Show Notes */
           <div style={{ marginTop: '20px' }}>
-            <ClinicalNotes patientId={targetPatientId} />
+            <ClinicalNotes/>
           </div>
         ) : (
           /* SCENARIO B: Patient View -> Show Placeholder */
