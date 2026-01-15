@@ -7,6 +7,9 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import ProtectedRoute from "./ProtectedRoute";
 import Dashboard from "./components/Dashboard";
 import { UserProfile } from "./components/UserProfile";
+import PatientAppointments from "./components/PatientAppts";
+import DoctorAppointments from "./components/DoctorAppts";
+
 export interface User {
   id: number;
   email: string;
@@ -74,7 +77,7 @@ function App() {
             path="/example-patient-page"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} isRoleAllowed={isRoleAllowedPatient}>
-                <div>Example Page for Patients</div>
+                <PatientAppointments />
               </ProtectedRoute>
             }
           />
@@ -82,7 +85,7 @@ function App() {
             path="/example-psychologist-page"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} isRoleAllowed={isRoleAllowedPsychologist}>
-                <div>Example Page for Psychologists</div>
+                <DoctorAppointments />
               </ProtectedRoute>
             }
           />

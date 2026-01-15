@@ -1,0 +1,90 @@
+.schedule-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.back-button {
+  align-self: flex-start;
+  margin-bottom: 15px;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 520px;
+}
+
+.timeslot {
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  min-height: 45px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
+  text-align: center;
+  user-select: none;
+}
+
+.timeslot.available {
+  cursor: pointer;
+}
+
+.timeslot.available:hover {
+  background-color: #e7f3ff;
+  border-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.timeslot.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.timeslot.taken {
+  background-color: #c0c0c0;
+  color: #666;
+  cursor: not-allowed;
+  border-color: #999;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.timeslot .time {
+  font-size: 0.85rem;
+}
+
+.taken-label {
+  font-size: 0.65rem;
+  font-weight: bold;
+  color: #666;
+  margin-top: 4px;
+}
+
+.set-appointment-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.set-appointment-btn:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
