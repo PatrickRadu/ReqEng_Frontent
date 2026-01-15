@@ -9,6 +9,9 @@ import Dashboard from "./components/Dashboard";
 import DoctorAppointments from "./components/DoctorAppts";
 import PatientAppointments from "./components/PatientAppts";
 import { UserProfile } from "./components/UserProfile";
+import PatientAppointments from "./components/PatientAppts";
+import DoctorAppointments from "./components/DoctorAppts";
+
 export interface User {
   id: number;
   email: string;
