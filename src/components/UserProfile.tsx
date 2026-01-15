@@ -5,6 +5,7 @@ import './Dashboard.css';
 import { AppCalendar } from './AppCalendar';
 import { DoctorSchedule } from './DoctorSchedule';
 import { PatientSchedule } from './PatientSchedule';
+import { LogOut } from 'lucide-react';
 
 export const UserProfile: React.FC = () => {
   const navigate = useNavigate();
@@ -20,15 +21,46 @@ export const UserProfile: React.FC = () => {
   // State to track selected day for schedule view
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
+  // --- LOGOUT FUNCTION ---
+  const handleLogout = () => {
+    // 1. Clear all authentication data
+    localStorage.clear();
+    // 2. Redirect to login page
+    navigate('/login');
+  };
+
   return (
     <div className="dashboard-container big-container">
       {/* Top info */}
       <div className="dashboard-info">
-        <h1>{currentUserRoleCapitalized} Profile</h1>
-        <p>Viewing details for User ID: {targetPatientId}</p>
-        <p>
-          Logged in as: <strong>{fullName} ({currentUserRoleCapitalized})</strong>
-        </p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+            <div>
+                <h1>{currentUserRoleCapitalized} Profile</h1>
+                <p>Viewing details for User ID: {targetPatientId}</p>
+                <p>
+                Logged in as: <strong>{fullName} ({currentUserRoleCapitalized})</strong>
+                </p>
+            </div>
+
+            {/* LOGOUT BUTTON */}
+            <button 
+                onClick={handleLogout}
+                style={{
+                    backgroundColor: '#dc3545', // Red for logout
+                    color: 'white',
+                    border: 'none',
+                    padding: '8px 16px',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontWeight: 'bold'
+                }}
+            >
+                <LogOut size={16} /> Logout
+            </button>
+        </div>
       </div>
 
       <div className="dashboard-panel">

@@ -34,7 +34,6 @@ export const ClinicalNotes: React.FC = () => {
     const fetchPatients = async () => {
       try {
         const token = localStorage.getItem('access_token');
-        // Assumes an endpoint /users that filters by role
         const response = await axios.get<Patient[]>(`${baseApiUrl}/users`, {
           params: { role: 'patient' }, 
           headers: { Authorization: `Bearer ${token}` }
